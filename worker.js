@@ -86,28 +86,45 @@ function buildSystemPrompt(role) {
     default: "You are responding to a team member. Be helpful, precise, and always cite your sources."
   };
 
-  return `You are the Demand Intelligence AI Assistant for a satellite telecommunications company.
+  // Build compact context based on role to minimise tokens
+  var demandSummary = DEMAND_DATA.demands.map(function(d) {
+    return {
+      id: d.id, title: d.title, status: d.status, priority: d.priority,
+      owner: d.owner, requestor: d.requestor, updated: d.updated_at,
+      rollout: d.target_rollout, actions: d.open_actions, risks: d.risks,
+      notes: d.notes, jira: d.jira_epic, docs: d.linked_documents,
+      reqs: d.business_requirements ? d.business_requirements.substring(0,200) : ''
+    };
+  });
 
-You have access to the complete demand portfolio, Jira tickets, and meeting minutes for this organisation.
+  var context = 'DEMAND PORTFOLIO (summary):\n' + JSON.stringify(demandSummary) + '\n\n';
+
+  // Add Jira only for developer/demand_manager roles
+  if (role === 'developer' || role === 'demand_manager') {
+    context += 'JIRA TICKETS:\n' + JSON.stringify(JIRA_DATA.tickets) + '\n\n';
+  }
+
+  // Add meeting minutes only for demand_manager role
+  if (role === 'demand_manager') {
+    context += 'MEETING MINUTES:\n' + JSON.stringify(MEETING_MINUTES) + '\n\n';
+  }
+
+  // Add portfolio stats for executive
+  if (role === 'executive') {
+    context += 'PORTFOLIO STATS:\n' + JSON.stringify(DEMAND_DATA.metadata) + '\n\n';
+  }
+
+  return `You are the Demand Intelligence AI Assistant for a satellite telecommunications company.
 
 ${roleContext[role] || roleContext.default}
 
-DEMAND PORTFOLIO:
-${JSON.stringify(DEMAND_DATA, null, 2)}
-
-JIRA TICKETS:
-${JSON.stringify(JIRA_DATA, null, 2)}
-
-MEETING MINUTES:
-${JSON.stringify(MEETING_MINUTES, null, 2)}
-
+${context}
 RULES:
 - Always cite your source (e.g. "Per A-ah! as of 21 May 2025", "Per Jira Sprint 14", "Per Teams meeting 15 May")
-- If information is not available in the data provided, say so clearly — never invent
-- For status queries, always include: current stage, owner, target rollout, and open actions
-- For portfolio queries, always include the summary breakdown by stage
+- If information is not in the data provided, say so clearly — never invent
+- For status queries include: stage, owner, target rollout, open actions
 - Keep answers concise but complete
-- Use bullet points for lists of items
+- Use bullet points for lists
 - Today's date is 21 May 2025`;
 }
 
