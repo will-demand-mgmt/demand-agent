@@ -1,0 +1,242 @@
+{
+  "demands": [
+    {
+      "id": "DM-001",
+      "title": "Dynamic Beam Capacity Allocation API",
+      "status": "Implementation & Testing",
+      "priority": "Critical",
+      "owner": "Marco Rossi",
+      "requestor": "StarConnect Ltd",
+      "created_at": "2025-01-15",
+      "updated_at": "2025-05-20",
+      "target_rollout": "2025-07-01",
+      "description": "Development of a REST API enabling external clients to dynamically reallocate contracted MHz capacity across satellite beams in near real-time. The system must complete end-to-end execution within 15 minutes.",
+      "business_requirements": "BR-01: Allow dynamic redistribution of contracted MHz across predefined beam groups. BR-02: Provide REST/JSON API for external client integration. BR-03: Zero manual processing in standard execution path. BR-04: Maximum 15-minute end-to-end execution SLA. BR-05: Enforce contract-based capacity limits per client and beam group.",
+      "jira_epic": "DSAT-100",
+      "linked_documents": ["DM-001_Mission_Brief_v2.1.pptx", "DM-001_FRD_v1.3.docx"],
+      "last_meeting": "2025-05-15",
+      "open_actions": [
+        {"action": "Complete API layer implementation", "owner": "L. Bianchi", "due": "2025-05-30"},
+        {"action": "Execute integration test suite with Planning System", "owner": "S. Chen", "due": "2025-06-05"}
+      ],
+      "risks": ["Planning System API stability under load", "Third-party Frequency Planning System response time"],
+      "notes": "Phase 3.4 of the Flexible MHz programme. Design review approved on 10 May 2025."
+    },
+    {
+      "id": "DM-002",
+      "title": "Customer Portal — Self-Service Bandwidth Management",
+      "status": "Design",
+      "priority": "High",
+      "owner": "Francesca Marino",
+      "requestor": "OceanSat Services",
+      "created_at": "2025-02-03",
+      "updated_at": "2025-05-18",
+      "target_rollout": "2025-09-15",
+      "description": "Web portal enabling enterprise customers to visualise, manage, and adjust their satellite bandwidth allocations in real time without contacting the operations team. Includes dashboards, alerts, and self-service reallocation workflows.",
+      "business_requirements": "BR-01: Provide real-time visibility of bandwidth consumption per beam and service. BR-02: Enable customers to submit reallocation requests directly from the portal. BR-03: Integrate with BSS/OSS for contract and entitlement data. BR-04: Support role-based access for customer admin and read-only users. BR-05: Provide exportable usage reports.",
+      "jira_epic": "DSAT-200",
+      "linked_documents": ["DM-002_Mission_Brief_v1.0.pptx", "DM-002_BRD_v1.1.docx"],
+      "last_meeting": "2025-05-12",
+      "open_actions": [
+        {"action": "Finalise UX wireframes for reallocation workflow", "owner": "F. Marino", "due": "2025-05-28"},
+        {"action": "Confirm BSS/OSS API contract data feed specification", "owner": "M. Rossi", "due": "2025-06-01"}
+      ],
+      "risks": ["BSS/OSS API availability for real-time data", "Customer onboarding complexity"],
+      "notes": "Stakeholder review scheduled for 2 June 2025. UX prototype approved by OceanSat on 8 May."
+    },
+    {
+      "id": "DM-003",
+      "title": "Automated SLA Monitoring & Alerting System",
+      "status": "Roll-out",
+      "priority": "Critical",
+      "owner": "Luca Bianchi",
+      "requestor": "Internal — Operations",
+      "created_at": "2024-10-01",
+      "updated_at": "2025-05-19",
+      "target_rollout": "2025-06-01",
+      "description": "Automated system for real-time SLA monitoring across all active satellite services. Generates alerts when performance thresholds are breached and produces automated incident reports for the operations team.",
+      "business_requirements": "BR-01: Monitor latency, availability, and throughput KPIs in real time. BR-02: Generate alerts within 2 minutes of SLA breach detection. BR-03: Produce automated incident reports with root cause classification. BR-04: Integrate with existing NMS and ticketing systems. BR-05: Provide executive dashboard with SLA compliance scores.",
+      "jira_epic": "DSAT-300",
+      "linked_documents": ["DM-003_Mission_Brief_v3.0.pptx", "DM-003_Runbook_v1.0.docx"],
+      "last_meeting": "2025-05-16",
+      "open_actions": [
+        {"action": "Complete production environment smoke test", "owner": "L. Bianchi", "due": "2025-05-25"},
+        {"action": "Train operations team on alert management console", "owner": "A. Ferrari", "due": "2025-05-28"}
+      ],
+      "risks": ["NMS integration stability during cutover", "Alert fatigue if thresholds not calibrated correctly"],
+      "notes": "Go-live planned for 1 June 2025. Hypercare period of 4 weeks post go-live."
+    },
+    {
+      "id": "DM-004",
+      "title": "LEO/GEO Hybrid Network Orchestration",
+      "status": "Shaping",
+      "priority": "High",
+      "owner": "Sofia Chen",
+      "requestor": "AeroLink Aviation",
+      "created_at": "2025-04-20",
+      "updated_at": "2025-05-10",
+      "target_rollout": "2026-03-01",
+      "description": "Orchestration layer enabling seamless handover and load balancing between LEO and GEO satellite constellations for aviation customers. Aims to provide consistent connectivity during LEO satellite transitions.",
+      "business_requirements": "BR-01: Enable automatic handover between LEO and GEO within 500ms. BR-02: Maintain service continuity during constellation transitions. BR-03: Optimise routing based on latency, cost, and availability. BR-04: Support up to 500 concurrent aircraft sessions.",
+      "jira_epic": null,
+      "linked_documents": ["DM-004_Concept_Note_v0.1.docx"],
+      "last_meeting": "2025-05-08",
+      "open_actions": [
+        {"action": "Complete feasibility assessment for LEO handover latency", "owner": "S. Chen", "due": "2025-06-15"},
+        {"action": "Engage AeroLink for requirements workshop", "owner": "F. Marino", "due": "2025-06-10"}
+      ],
+      "risks": ["LEO constellation API availability for integration", "Regulatory approval for aviation-grade LEO services"],
+      "notes": "Early shaping phase. Concept note under review by Architecture Board."
+    },
+    {
+      "id": "DM-005",
+      "title": "Maritime Connectivity Quality Dashboard",
+      "status": "High Level Assessment",
+      "priority": "Medium",
+      "owner": "Alberto Pavani",
+      "requestor": "BlueSea Maritime",
+      "created_at": "2025-03-10",
+      "updated_at": "2025-05-14",
+      "target_rollout": "2025-11-01",
+      "description": "Real-time dashboard providing maritime operators with visibility of connectivity quality metrics per vessel — including signal strength, latency, throughput, and beam handover events.",
+      "business_requirements": "BR-01: Display real-time connectivity KPIs per vessel on a map interface. BR-02: Provide historical trend analysis for the last 30/90 days. BR-03: Alert operators when vessel connectivity degrades below threshold. BR-04: Export reports in PDF and CSV formats.",
+      "jira_epic": null,
+      "linked_documents": ["DM-005_HLA_Report_v1.0.docx"],
+      "last_meeting": "2025-05-13",
+      "open_actions": [
+        {"action": "Assess data availability from NMS for vessel-level metrics", "owner": "A. Pavani", "due": "2025-06-01"},
+        {"action": "Present HLA findings to BlueSea steering committee", "owner": "A. Pavani", "due": "2025-06-20"}
+      ],
+      "risks": ["NMS data granularity may not support vessel-level metrics", "GDPR compliance for vessel location data"],
+      "notes": "HLA in progress. Initial architecture options under evaluation."
+    },
+    {
+      "id": "DM-006",
+      "title": "In-Flight Entertainment Bandwidth Optimizer",
+      "status": "Design",
+      "priority": "High",
+      "owner": "Marco Rossi",
+      "requestor": "SkyJet Airlines",
+      "created_at": "2025-02-28",
+      "updated_at": "2025-05-17",
+      "target_rollout": "2025-10-01",
+      "description": "AI-driven bandwidth optimization engine for in-flight entertainment systems. Dynamically allocates available bandwidth across passenger services (streaming, browsing, messaging) based on demand patterns and QoS policies.",
+      "business_requirements": "BR-01: Allocate bandwidth dynamically based on real-time passenger demand. BR-02: Enforce QoS policies (priority: safety communications > crew > passenger premium > passenger standard). BR-03: Reduce passenger-reported connectivity complaints by 40%. BR-04: Integrate with IFE system APIs for demand signal ingestion.",
+      "jira_epic": "DSAT-600",
+      "linked_documents": ["DM-006_Mission_Brief_v1.2.pptx", "DM-006_Technical_Design_v0.9.docx"],
+      "last_meeting": "2025-05-14",
+      "open_actions": [
+        {"action": "Finalise QoS policy matrix with SkyJet", "owner": "M. Rossi", "due": "2025-05-31"},
+        {"action": "Review AI model training dataset requirements", "owner": "S. Chen", "due": "2025-06-07"}
+      ],
+      "risks": ["IFE system API documentation incomplete", "AI model accuracy in low-bandwidth edge cases"],
+      "notes": "Design phase progressing. Technical design review scheduled 28 May 2025."
+    },
+    {
+      "id": "DM-007",
+      "title": "BSS/OSS Integration — Real-time Provisioning",
+      "status": "Closure",
+      "priority": "High",
+      "owner": "Francesca Marino",
+      "requestor": "Internal — Engineering",
+      "created_at": "2024-07-01",
+      "updated_at": "2025-05-05",
+      "target_rollout": "2025-04-01",
+      "description": "Integration of BSS and OSS platforms to enable real-time automated service provisioning. Eliminates manual provisioning steps and reduces time-to-service from 4 hours to under 10 minutes.",
+      "business_requirements": "BR-01: Automate end-to-end service provisioning triggered by BSS order events. BR-02: Reduce provisioning time to under 10 minutes. BR-03: Provide real-time provisioning status to customer-facing systems. BR-04: Support rollback on provisioning failure.",
+      "jira_epic": "DSAT-700",
+      "linked_documents": ["DM-007_Closure_Report_v1.0.docx", "DM-007_Lessons_Learned.docx"],
+      "last_meeting": "2025-04-28",
+      "open_actions": [
+        {"action": "Complete post-implementation review document", "owner": "F. Marino", "due": "2025-05-31"},
+        {"action": "Archive all project artefacts to SharePoint", "owner": "F. Marino", "due": "2025-05-31"}
+      ],
+      "risks": [],
+      "notes": "Successfully delivered. Provisioning time reduced to 8 minutes average. Closure report in final review."
+    },
+    {
+      "id": "DM-008",
+      "title": "Satellite Ground Station Redundancy Framework",
+      "status": "Shaping",
+      "priority": "Critical",
+      "owner": "Luca Bianchi",
+      "requestor": "Internal — Infrastructure",
+      "created_at": "2025-05-01",
+      "updated_at": "2025-05-20",
+      "target_rollout": "2026-06-01",
+      "description": "Design and implementation of a geographic redundancy framework for satellite ground stations. Ensures automatic failover within 60 seconds in case of primary ground station outage, maintaining service continuity for all active customers.",
+      "business_requirements": "BR-01: Achieve automatic failover to secondary ground station within 60 seconds. BR-02: Maintain 99.99% service availability across the redundancy framework. BR-03: Support active-active and active-passive redundancy configurations. BR-04: Zero customer impact during planned maintenance switchovers.",
+      "jira_epic": null,
+      "linked_documents": ["DM-008_Initial_Brief_v0.1.docx"],
+      "last_meeting": "2025-05-19",
+      "open_actions": [
+        {"action": "Identify candidate secondary ground station locations", "owner": "L. Bianchi", "due": "2025-06-15"},
+        {"action": "Define RTO and RPO requirements with Infrastructure team", "owner": "L. Bianchi", "due": "2025-06-10"}
+      ],
+      "risks": ["Geographic constraints for secondary station siting", "Budget approval for infrastructure investment"],
+      "notes": "Critical infrastructure initiative. Triggered by recent industry outage analysis. Executive sponsorship confirmed."
+    },
+    {
+      "id": "DM-009",
+      "title": "Enterprise VSAT Remote Monitoring Platform",
+      "status": "Implementation & Testing",
+      "priority": "High",
+      "owner": "Sofia Chen",
+      "requestor": "GlobalCorp Enterprise",
+      "created_at": "2025-01-20",
+      "updated_at": "2025-05-21",
+      "target_rollout": "2025-08-01",
+      "description": "Centralised remote monitoring platform for GlobalCorp's 200+ VSAT terminals deployed across remote enterprise sites. Provides NOC visibility, predictive maintenance alerts, and automated fault resolution.",
+      "business_requirements": "BR-01: Monitor all 200+ VSAT terminals from a single NOC dashboard. BR-02: Detect and alert on terminal faults within 5 minutes. BR-03: Provide predictive maintenance indicators based on signal degradation trends. BR-04: Support automated remote reboot and configuration reset for Tier-1 faults.",
+      "jira_epic": "DSAT-900",
+      "linked_documents": ["DM-009_Mission_Brief_v2.0.pptx", "DM-009_Technical_Spec_v1.1.docx"],
+      "last_meeting": "2025-05-20",
+      "open_actions": [
+        {"action": "Complete load testing for 200 concurrent terminal connections", "owner": "S. Chen", "due": "2025-06-03"},
+        {"action": "Resolve SNMP polling timeout issue on legacy terminals", "owner": "A. Ferrari", "due": "2025-05-27"}
+      ],
+      "risks": ["Legacy terminal SNMP compatibility", "Network latency impact on real-time monitoring accuracy"],
+      "notes": "Integration testing 80% complete. UAT with GlobalCorp scheduled for 15 June 2025."
+    },
+    {
+      "id": "DM-010",
+      "title": "5G Backhaul via Satellite — Feasibility Study",
+      "status": "High Level Assessment",
+      "priority": "Medium",
+      "owner": "Alberto Pavani",
+      "requestor": "TowerNet Telecom",
+      "created_at": "2025-03-25",
+      "updated_at": "2025-05-16",
+      "target_rollout": "2026-01-01",
+      "description": "Feasibility study for providing 5G backhaul connectivity via satellite for TowerNet's rural tower network. Evaluates technical viability, latency constraints, capacity requirements, and commercial model for satellite-based 5G backhaul.",
+      "business_requirements": "BR-01: Assess technical viability of satellite 5G backhaul for latency-sensitive applications. BR-02: Define capacity requirements per tower site based on traffic projections. BR-03: Evaluate LEO vs GEO options for 5G backhaul use cases. BR-04: Produce commercial model recommendations for TowerNet.",
+      "jira_epic": null,
+      "linked_documents": ["DM-010_Feasibility_Brief_v0.2.docx"],
+      "last_meeting": "2025-05-15",
+      "open_actions": [
+        {"action": "Complete latency benchmark analysis for LEO 5G backhaul", "owner": "A. Pavani", "due": "2025-06-20"},
+        {"action": "Engage TowerNet for traffic model data sharing", "owner": "F. Marino", "due": "2025-06-05"}
+      ],
+      "risks": ["5G latency requirements may exceed GEO capabilities", "TowerNet budget constraints for LEO premium pricing"],
+      "notes": "Feasibility study phase. Results expected by end of June 2025."
+    }
+  ],
+  "metadata": {
+    "total_demands": 10,
+    "last_updated": "2025-05-21",
+    "portfolio_summary": {
+      "Shaping": 2,
+      "High Level Assessment": 2,
+      "Design": 2,
+      "Implementation & Testing": 2,
+      "Roll-out": 1,
+      "Closure": 1
+    },
+    "owners": ["Marco Rossi", "Francesca Marino", "Luca Bianchi", "Sofia Chen", "Alberto Pavani"],
+    "priorities": {
+      "Critical": 3,
+      "High": 5,
+      "Medium": 2
+    }
+  }
+}
